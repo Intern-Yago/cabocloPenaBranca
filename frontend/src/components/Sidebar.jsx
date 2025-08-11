@@ -67,7 +67,7 @@ export function Sidebar() {
           {/* Header */}
           <div className="p-6 border-b border-sidebar-border">
             <h2 className="text-lg font-semibold text-sidebar-foreground">
-              Templo Umbandista
+              Tenda Espírita Caboclo Pena Branca
             </h2>
             <p className="text-sm text-sidebar-foreground/60">
               Sistema de Gestão
