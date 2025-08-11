@@ -32,7 +32,7 @@ export function Estoque() {
 
   const fetchProdutos = async () => {
     try {
-      const response = await fetch('/api/produtos')
+      const response = await fetch('http://localhost:5000/api/produtos')
       const data = await response.json()
       setProdutos(data)
     } catch (error) {
@@ -47,8 +47,8 @@ export function Estoque() {
     
     try {
       const url = editingProduto 
-        ? `/api/produtos/${editingProduto.id}`
-        : '/api/produtos'
+        ? `http://localhost:5000/api/produtos/${editingProduto.id}`
+        : 'http://localhost:5000/api/produtos'
       
       const method = editingProduto ? 'PUT' : 'POST'
       
@@ -95,7 +95,7 @@ export function Estoque() {
   const handleDelete = async (id) => {
     if (confirm('Tem certeza que deseja excluir este produto?')) {
       try {
-        await fetch(`/api/produtos/${id}`, { method: 'DELETE' })
+        await fetch(`http://localhost:5000/api/produtos/${id}`, { method: 'DELETE' })
         await fetchProdutos()
       } catch (error) {
         console.error('Erro ao excluir produto:', error)
@@ -107,7 +107,7 @@ export function Estoque() {
     e.preventDefault()
     
     try {
-      const response = await fetch(`/api/produtos/${ajustandoProduto.id}/ajustar-estoque`, {
+      const response = await fetch(`http://localhost:5000/api/produtos/${ajustandoProduto.id}/ajustar-estoque`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

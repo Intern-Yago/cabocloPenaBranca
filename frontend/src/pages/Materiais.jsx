@@ -47,7 +47,7 @@ export function Materiais() {
 
   const fetchMateriais = async () => {
     try {
-      const response = await fetch('/api/materiais')
+      const response = await fetch('http://192.168.18.150:5000/api/materiais')
       const data = await response.json()
       setMateriais(data)
     } catch (error) {
@@ -59,7 +59,7 @@ export function Materiais() {
 
   const fetchMovimentacoes = async () => {
     try {
-      const response = await fetch('/api/movimentacoes')
+      const response = await fetch('http://192.168.18.150:5000/api/movimentacoes')
       const data = await response.json()
       setMovimentacoes(data)
     } catch (error) {
@@ -69,7 +69,7 @@ export function Materiais() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch('/api/categorias-materiais')
+      const response = await fetch('http://192.168.18.150:5000/api/categorias-materiais')
       const data = await response.json()
       setCategorias(data)
     } catch (error) {
@@ -82,8 +82,8 @@ export function Materiais() {
     
     try {
       const url = editingMaterial 
-        ? `/api/materiais/${editingMaterial.id}`
-        : '/api/materiais'
+        ? `http://192.168.18.150:5000/api/materiais/${editingMaterial.id}`
+        : 'http://192.168.18.150:5000/api/materiais'
       
       const method = editingMaterial ? 'PUT' : 'POST'
       
@@ -120,7 +120,7 @@ export function Materiais() {
     e.preventDefault()
     
     try {
-      const response = await fetch(`/api/materiais/${materialMovimentacao.id}/movimentar`, {
+      const response = await fetch(`http://192.168.18.150:5000/api/materiais/${materialMovimentacao.id}/movimentar`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ export function Materiais() {
   const handleDelete = async (id) => {
     if (confirm('Tem certeza que deseja remover este material?')) {
       try {
-        await fetch(`/api/materiais/${id}`, { method: 'DELETE' })
+        await fetch(`http://192.168.18.150:5000/api/materiais/${id}`, { method: 'DELETE' })
         await fetchMateriais()
       } catch (error) {
         console.error('Erro ao remover material:', error)

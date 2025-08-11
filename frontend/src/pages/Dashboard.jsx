@@ -12,9 +12,9 @@ export function Dashboard() {
     const fetchResumos = async () => {
       try {
         const [financeiroRes, materiaisRes, membrosRes] = await Promise.all([
-          fetch('/api/resumo-financeiro'),
-          fetch('/api/resumo-estoque'),
-          fetch('/api/resumo-membros')
+          fetch('http://localhost:5000/api/resumo-financeiro'),
+          fetch('http://localhost:5000/api/resumo-estoque'),
+          fetch('http://localhost:5000/api/resumo-membros')
         ])
         
         const financeiro = await financeiroRes.json()

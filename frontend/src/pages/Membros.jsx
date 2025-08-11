@@ -40,7 +40,7 @@ export function Membros() {
 
   const fetchMembros = async () => {
     try {
-      const response = await fetch('/api/membros')
+      const response = await fetch('http://localhost:5000/api/membros')
       const data = await response.json()
       setMembros(data)
     } catch (error) {
@@ -52,7 +52,7 @@ export function Membros() {
 
   const fetchPagamentos = async () => {
     try {
-      const response = await fetch('/api/pagamentos-mensalidade')
+      const response = await fetch('http://localhost:5000/api/pagamentos-mensalidade')
       const data = await response.json()
       setPagamentos(data)
     } catch (error) {
@@ -65,8 +65,8 @@ export function Membros() {
     
     try {
       const url = editingMembro 
-        ? `/api/membros/${editingMembro.id}`
-        : '/api/membros'
+        ? `http://localhost:5000/api/membros/${editingMembro.id}`
+        : 'http://localhost:5000/api/membros'
       
       const method = editingMembro ? 'PUT' : 'POST'
       
@@ -99,7 +99,7 @@ export function Membros() {
     e.preventDefault()
     
     try {
-      const response = await fetch('/api/pagamentos-mensalidade', {
+      const response = await fetch('http://localhost:5000/api/pagamentos-mensalidade', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ export function Membros() {
   const handleDelete = async (id) => {
     if (confirm('Tem certeza que deseja remover este membro?')) {
       try {
-        await fetch(`/api/membros/${id}`, { method: 'DELETE' })
+        await fetch(`http://localhost:5000/api/membros/${id}`, { method: 'DELETE' })
         await fetchMembros()
       } catch (error) {
         console.error('Erro ao remover membro:', error)
@@ -154,7 +154,7 @@ export function Membros() {
   const handleDeletePagamento = async (id) => {
     if (confirm('Tem certeza que deseja excluir este pagamento?')) {
       try {
-        await fetch(`/api/pagamentos-mensalidade/${id}`, { method: 'DELETE' })
+        await fetch(`http://localhost:5000/api/pagamentos-mensalidade/${id}`, { method: 'DELETE' })
         await fetchPagamentos()
       } catch (error) {
         console.error('Erro ao excluir pagamento:', error)

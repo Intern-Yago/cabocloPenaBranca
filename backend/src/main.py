@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from src.models.user import db
+from src.models import db
 from src.routes.user import user_bp
 from src.routes.financeiro import financeiro_bp
 from src.routes.estoque import estoque_bp
@@ -15,7 +15,7 @@ app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'sta
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
 # Configurar CORS para permitir comunicação com frontend
-CORS(app)
+CORS(app, origins=["http://localhost:5173"])
 
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(financeiro_bp, url_prefix='/api')

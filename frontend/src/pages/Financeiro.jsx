@@ -29,7 +29,7 @@ export function Financeiro() {
 
   const fetchTransacoes = async () => {
     try {
-      const response = await fetch('/api/transacoes')
+      const response = await fetch('http://localhost:5000/api/transacoes')
       const data = await response.json()
       setTransacoes(data)
     } catch (error) {
@@ -41,7 +41,7 @@ export function Financeiro() {
 
   const fetchCategorias = async () => {
     try {
-      const response = await fetch('/api/categorias')
+      const response = await fetch('http://localhost:5000/api/categorias')
       const data = await response.json()
       setCategorias(data)
     } catch (error) {
@@ -54,8 +54,8 @@ export function Financeiro() {
     
     try {
       const url = editingTransacao 
-        ? `/api/transacoes/${editingTransacao.id}`
-        : '/api/transacoes'
+        ? `http://localhost:5000/api/transacoes/${editingTransacao.id}`
+        : 'http://localhost:5000/api/transacoes'
       
       const method = editingTransacao ? 'PUT' : 'POST'
       
@@ -96,7 +96,7 @@ export function Financeiro() {
   const handleDelete = async (id) => {
     if (confirm('Tem certeza que deseja excluir esta transação?')) {
       try {
-        await fetch(`/api/transacoes/${id}`, { method: 'DELETE' })
+        await fetch(`http://localhost:5000/api/transacoes/${id}`, { method: 'DELETE' })
         await fetchTransacoes()
       } catch (error) {
         console.error('Erro ao excluir transação:', error)
